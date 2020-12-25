@@ -1,0 +1,13 @@
+{
+    "version": 1,
+    "configurePresets": [
+      {
+        "name": "eb-release",
+        "binaryDir": "${sourceDir}/build/${presetName}",
+        "generator": "Unix Makefiles",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release"
+        }
+      }
+    ]
+  }
