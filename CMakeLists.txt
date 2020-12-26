@@ -8,5 +8,9 @@ install(TARGETS "${PROJECT_NAME}" DESTINATION bin)
 install(FILES "${MAIN_FILE}" DESTINATION src)
 
 find_package(OpenGL REQUIRED)
+find_package(GLUT REQUIRED)
+
 include_directories( ${OPENGL_INCLUDE_DIRS} )
-target_link_libraries("${PROJECT_NAME}" ${OPENGL_LIBRARIES})
+include_directories(${GLUT_INCLUDE_DIRS} )
+
+target_link_libraries("${PROJECT_NAME}" ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
