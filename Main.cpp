@@ -26,10 +26,12 @@ void addPixels() {
 
 void display()
 {
-	glClearColor(0.0,0.0,0.0,0.0);
+    glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glFlush();
+
 	addPixels();
+
     glDrawPixels(WIDTH, HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, PixelBuffer);
 	glutSwapBuffers();
 
@@ -41,20 +43,24 @@ void display()
 	
 	if (startX < 0 || startY < 0)
 		updateNumber = 1;
+}
 
-	glutPostRedisplay();
-	sleep(0.01);
+void idle() {
+    glutPostRedisplay();
 }
 
 int main(int argc,char **argv)
 {
     std::cout << "Hello, world!\n";
 	glutInit(&argc,argv);
-    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+    glutInitDisplayMode(GLUT_DOUBLE);
 	glutInitWindowSize(WIDTH,HEIGHT);
 	glutInitWindowPosition(0,0);
 	glutCreateWindow("EB");
+
 	glutDisplayFunc(display);
+    glutIdleFunc(idle);
+
 	glutMainLoop();
 
 	return 0;
