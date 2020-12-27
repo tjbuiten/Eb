@@ -1,5 +1,4 @@
 #include "Pixel.hpp"
-#include <iostream>
 
 void Pixel::draw(GLubyte* pixelBuffer) {
     for (int x = this->coordinate.x; x < this->coordinate.x + this->size; x++) {

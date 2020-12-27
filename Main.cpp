@@ -3,6 +3,7 @@
 #include <GLUT/glut.h>
 #include <unistd.h>
 #include <Line.hpp>
+#include <ThreeDSquare.hpp>
 
 int WIDTH = 200;
 int HEIGHT = 200;
@@ -25,31 +26,12 @@ void drawPixel(int x, int y, int r, int g, int b, GLubyte* pixels, int width, in
 
 void addPixels() {
     PixelBuffer = new GLubyte[WIDTH * HEIGHT * 3];
-    std::cout << "LINE \n\n";
-    Line(
+    ThreeDSquare(
         WIDTH,
         Coordinate(50, 50, 0),
-        Coordinate(100, 100, 0)
+        100,
+        12
     ).draw(PixelBuffer);
-    std::cout << "\n";
-    Line(
-        WIDTH,
-        Coordinate(100, 0, 0),
-        Coordinate(150, 50, 0)
-    ).draw(PixelBuffer);
-    std::cout << "\n";
-    Line(
-        WIDTH,
-        Coordinate(100, 0, 0),
-        Coordinate(50, 50, 0)
-    ).draw(PixelBuffer);
-    std::cout << "\n";
-    Line(
-        WIDTH,
-        Coordinate(100, 100, 0),
-        Coordinate(150, 50, 0)
-    ).draw(PixelBuffer);
-    std::cout << "\n\n";
 }
 
 void display()

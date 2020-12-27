@@ -1,6 +1,5 @@
 #include "Line.hpp"
 #include "Pixel.hpp"
-#include <iostream>
 #include <cmath>
 
 void Line::draw(GLubyte* pixelBuffer) {
@@ -22,18 +21,15 @@ void Line::draw(GLubyte* pixelBuffer) {
         stepsizeX = (end.x - start.x) / steps;
     }
 
-    std::cout << "startX: " << start.x << " endX: " << end.x << " startY: " << start.y << " endY: " << end.y << "\n";
-    std::cout << "stepsizeX: " << stepsizeX << " stepsizeY: " << stepsizeY << " steps: " << steps << "\n";
+    float stepsizeZ = (float) (end.z - start.z) / steps;
 
     for (int step = 0; step <= steps; step++) {
-        // std::cout << "x: " << start.x + (stepsizeX * step) << " y: " << start.y + (stepsizeY * step) << "\n";
-
         Pixel(
             this->screenWidth,
             Coordinate(
                 start.x + (stepsizeX * step),
                 start.y + (stepsizeY * step),
-                0
+                start.z + (stepsizeZ * step)
             ),
             5
         ).draw(pixelBuffer);

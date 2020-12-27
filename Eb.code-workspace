@@ -9,7 +9,8 @@
 			"new": "cpp",
 			"iostream": "cpp",
 			"chrono": "cpp",
-			"complex": "cpp"
+			"complex": "cpp",
+			"ostream": "cpp"
 		}
 	}
 }

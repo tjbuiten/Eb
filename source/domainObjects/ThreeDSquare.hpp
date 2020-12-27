@@ -1,16 +1,20 @@
 #pragma once
 #include <GLUT/glut.h>
 #include <Coordinate.hpp>
+#include <Line.hpp>
+#include <Square.hpp>
 
-class Pixel {
+class ThreeDSquare {
 	private:
         Coordinate coordinate;
         int size;
         int screenWidth;
+        int depth;
 	public:
-        Pixel (int screenWidth, Coordinate coordinate, int size): coordinate(coordinate) {
+        ThreeDSquare (int screenWidth, Coordinate coordinate, int size, int depth): coordinate(coordinate) {
             this->screenWidth = screenWidth;
-            this->size = size + ((coordinate.z * -1) * 0.25);
+            this->size = size;
+            this->depth = depth;
         }
         
         void draw(GLubyte* pixelBuffer);

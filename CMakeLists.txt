@@ -8,6 +8,8 @@ add_executable(
     "${MAIN_FILE}"
     source/domainObjects/Line.cpp
     source/domainObjects/Pixel.cpp
+    source/domainObjects/Square.cpp
+    source/domainObjects/ThreeDSquare.cpp
 )
 
 install(TARGETS "${PROJECT_NAME}" DESTINATION bin)
