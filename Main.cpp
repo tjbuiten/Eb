@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <Line.hpp>
 #include <ThreeDSquare.hpp>
+#include <boost/thread.hpp>
 
 int WIDTH = 200;
 int HEIGHT = 200;
@@ -11,6 +12,7 @@ GLubyte* PixelBuffer = new GLubyte[WIDTH * HEIGHT * 3];
 
 int startX = 5;
 int startY = 5;
+int squareSize = 100;
 
 int updateNumber = 1;
 
@@ -19,8 +21,8 @@ void addPixels() {
     ThreeDSquare(
         WIDTH,
         Coordinate(50, 50, 0),
-        100,
-        12
+        squareSize,
+        squareSize / 12.5
     ).draw(PixelBuffer);
 }
 
@@ -49,6 +51,13 @@ void idle() {
     glutPostRedisplay();
 }
 
+void userInput() {
+    while (true) {
+        std::cout << "SetSize:\n";
+        std::cin >> squareSize;
+    }
+}
+
 int main(int argc,char **argv)
 {
     std::cout << "Hello, world!\n";
@@ -61,7 +70,9 @@ int main(int argc,char **argv)
 	glutDisplayFunc(display);
     glutIdleFunc(idle);
 
-	glutMainLoop();
+	boost::thread t(userInput);
+
+    glutMainLoop();
 
 	return 0;
 }

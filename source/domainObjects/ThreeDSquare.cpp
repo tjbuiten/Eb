@@ -12,7 +12,7 @@ void ThreeDSquare::draw(GLubyte* pixelBuffer) {
             y,
             z
         ),
-        100
+        this->size
     ).draw(pixelBuffer);
     Square(
         this->screenWidth,
@@ -21,7 +21,7 @@ void ThreeDSquare::draw(GLubyte* pixelBuffer) {
             y + this->depth * 3,
             z + this->depth
         ),
-        100
+        this->size
     ).draw(pixelBuffer);
 
     Line(
