@@ -5,6 +5,7 @@ default_target: rebuild
 rebuild:
 	make clean
 	make build
+	make run
 
 .PHONY : build
 build:
@@ -12,6 +13,11 @@ build:
 	cmake -S . --preset=eb-release
 	@echo "Create executable"
 	cd ./build/eb-release; make
+
+.PHONY : run
+run:
+	@echo "Running application"
+	cd ./build/eb-release; ./Eb
 
 .PHONY : clean
 clean:
