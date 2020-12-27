@@ -14,16 +14,6 @@ int startY = 5;
 
 int updateNumber = 1;
 
-void drawPixel(int x, int y, int r, int g, int b, GLubyte* pixels, int width, int height)
-{
-    if (0 <= x && x < width && 0 <= y && y < height) {
-        int position = (x + y * width) * 3;
-        pixels[position] = r;
-        pixels[position + 1] = g;
-        pixels[position + 2] = b;
-    }
-}
-
 void addPixels() {
     PixelBuffer = new GLubyte[WIDTH * HEIGHT * 3];
     ThreeDSquare(
