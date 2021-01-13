@@ -6,12 +6,13 @@
 	],
 	"settings": {
 		"files.associations": {
-			"new": "cpp",
-			"iostream": "cpp",
-			"chrono": "cpp",
-			"complex": "cpp",
-			"ostream": "cpp",
-			"future": "cpp"
-		}
+            "new": "cpp",
+            "iostream": "cpp",
+            "chrono": "cpp",
+            "complex": "cpp",
+            "ostream": "cpp",
+            "future": "cpp",
+            "__node_handle": "cpp"
+        }
 	}
 }
