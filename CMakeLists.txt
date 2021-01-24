@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION "3.19")
+set (CMAKE_CXX_STANDARD 11)
 set(MAIN_FILE Main.cpp)
 set(SOURCE_DIRECTORY ./src)
 
@@ -8,12 +9,21 @@ add_executable(
     "${MAIN_FILE}"
     src/Includes/Glut.hpp
     src/Structures/Vector2.hpp
+    src/Input/EventHandlers/Headers/InputEventHandler.hpp
+    src/Input/EventHandlers/Headers/ImplementedInputEventHandler.hpp
+    src/Input/EventHandlers/Source/ImplementedInputEventHandler.cpp
+    src/Input/Headers/InputEventBus.hpp
+    src/Input/Headers/InputEventMap.hpp
+    src/Input/Headers/InputEvents.hpp
+    src/Input/Managers/Headers/InputManager.hpp
+    src/Input/Managers/Source/InputManager.cpp
+    src/Input/Source/InputEventBus.cpp
+    src/Input/Source/InputEventMap.cpp
     src/Output/Managers/Headers/ScreenManager.hpp
     src/Output/Managers/Source/ScreenManager.cpp
     src/Output/Objects/Headers/Screen.hpp
     src/Output/Objects/Source/Screen.cpp
-    src/Input/Managers/Headers/InputManager.hpp
-    src/Input/Managers/Source/InputManager.cpp
+    src/Structures/Vector2.hpp
 )
 
 install(TARGETS "${PROJECT_NAME}" DESTINATION bin)
@@ -30,8 +40,17 @@ include_directories(
     src/Output/Managers/Source/
     src/Output/Objects/Headers/
     src/Output/Objects/Source/
+    src/Input/Headers/
+    src/Input/Source/
+    src/Input/EventHandlers/Headers/
+    src/Input/EventHandlers/Source/
     src/Input/Managers/Headers/
     src/Input/Managers/Source/
+    src/Output/Managers/Headers/
+    src/Output/Managers/Source/
+    src/Output/Objects/Headers/
+    src/Output/Objects/Source/
+    src/Structures/
 )
 include_directories( ${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS} )
 

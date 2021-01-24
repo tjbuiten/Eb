@@ -1,14 +1,20 @@
 #pragma once
 
+#include <map>
 #include <unistd.h>
 #include <iostream>
+#include "InputEvents.hpp"
+#include "InputEventBus.hpp"
+#include "InputEventMap.hpp"
 
 class InputManager {
     private:
         static bool handleInput;
-        static std::string lastInput;
+        static InputEventBus* inputEventBus;
 	public:
-        InputManager() {}
+        InputManager(InputEventBus* inputEventBus) {
+            this->inputEventBus = inputEventBus;
+        }
 
         static void StartInputLoop();
 
