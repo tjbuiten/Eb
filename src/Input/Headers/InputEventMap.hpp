@@ -2,6 +2,7 @@
 
 #include <map>
 #include <string>
+#include <iostream>
 #include "InputEvents.hpp"
 
 class InputEventMap {

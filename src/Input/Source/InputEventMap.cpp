@@ -3,7 +3,8 @@
 std::map<std::string, InputEvents> const InputEventMap::inputMap = {
     {"line", InputEvents::Line},
     {"circle", InputEvents::Circle},
-    {"square", InputEvents::Square}
+    {"square", InputEvents::Square},
+    {"create screen", InputEvents::CreateScreen}
 };
 
 const InputEvents InputEventMap::GetEventForString(std::string str) {

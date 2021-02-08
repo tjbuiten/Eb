@@ -6,7 +6,7 @@
 class Screen {
     private:
         Vector2<int> size;
-        GLubyte* pixelBuffer;
+        GLubyte* pixelBuffer = nullptr;
         int windowId;
 	public:
         Screen(std::string screenName, Vector2<int> size): size(size) {
@@ -24,4 +24,6 @@ class Screen {
         void UpdateScreen();
 
         void Display();
+
+        int GetWindowId();
 };

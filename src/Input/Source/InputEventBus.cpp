@@ -7,7 +7,6 @@ void InputEventBus::Subscribe(InputEvents event, InputEventHandler* eventHandler
         eventHandlerList = new std::list<InputEventHandler*>();
     }
 
-    std::cout << "Registered eventhandler for event: " << event << "\n";
     eventHandlerList->push_back(eventHandler);
 
     this->eventHandlerMap.insert(
@@ -34,7 +33,6 @@ void InputEventBus::SentEvent(InputEvents event) {
     }
     
     for (InputEventHandler* eventHandler : *eventHandlerList) {
-        std::cout << "Should handle event\n";
         eventHandler->HandleEvent(event);
     }
 }

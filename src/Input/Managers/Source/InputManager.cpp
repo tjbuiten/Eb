@@ -9,7 +9,7 @@ void InputManager::StartInputLoop() {
 
     while (handleInput) {
         std::cout << "> ";
-        std::cin >> input;
+        std::getline(std::cin, input);
         
         const InputEvents event = InputEventMap::GetEventForString(input);
 
@@ -18,7 +18,6 @@ void InputManager::StartInputLoop() {
             std::cout << "Missing the eventbus\n";
         }
         else if (event != InputEvents::DEFAULT) {
-            std::cout << "That worked!\n";
             inputEventBus->SentEvent(event);
         }
         else {

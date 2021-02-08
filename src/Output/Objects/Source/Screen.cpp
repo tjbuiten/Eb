@@ -24,3 +24,7 @@ void Screen::Display() {
     glDrawPixels(*this->size.x, *this->size.y, GL_RGB, GL_UNSIGNED_BYTE, this->pixelBuffer);
 	glutSwapBuffers();
 }
+
+int Screen::GetWindowId() {
+    return this->windowId;
+}

@@ -4,5 +4,6 @@ enum InputEvents {
     DEFAULT = -1,
     Line,
     Circle,
-    Square
+    Square,
+    CreateScreen
 };

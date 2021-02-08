@@ -26,15 +26,16 @@ int main(int argc,char **argv)
     ImplementedInputEventHandler* eventHandler = new ImplementedInputEventHandler();
     ImplementedInputEventHandler* eventHandlerTwo = new ImplementedInputEventHandler();
 
+    screenManager = new ScreenManager(argc, argv);
+
     inputEventBus->Subscribe(InputEvents::Line, eventHandler);
     inputEventBus->Subscribe(InputEvents::Circle, eventHandler);
+    inputEventBus->Subscribe(InputEvents::CreateScreen, screenManager);
 
     boost::thread inputThread(inputManager->StartInputLoop);
 
-    screenManager = new ScreenManager(argc, argv);
-
     screenManager->CreateScreen("ScreenOne", Vector2<int>(&WIDTH, &HEIGHT));
-    screenManager->CreateScreen("ScreenTwo", Vector2<int>(&WIDTH, &HEIGHT));
+    // screenManager->CreateScreen("ScreenTwo", Vector2<int>(&WIDTH, &HEIGHT));
 
     screenManager->StartDisplayLoop();
 
