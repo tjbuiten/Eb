@@ -1,6 +1,5 @@
 #pragma once
 
-#include "InputEventHandler.hpp"
 #include "Glut.hpp"
 #include <vector>
 #include <list>
@@ -9,8 +8,9 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include "InputEvents.hpp"
 
-class ScreenManager: public InputEventHandler {
+class ScreenManager {
     private:
         static std::vector<Screen> screens;
         static std::list<InputEvents> eventQueue;

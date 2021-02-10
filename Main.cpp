@@ -6,7 +6,7 @@
 #include "ScreenManager.hpp"
 #include "InputManager.hpp"
 #include "InputEventBus.hpp"
-#include "ImplementedInputEventHandler.hpp"
+#include "CreateScreenEventHandler.hpp"
 #include "InputEventMap.hpp"
 
 int WIDTH = 200;
@@ -22,20 +22,13 @@ int main(int argc,char **argv)
 
     inputEventBus = new InputEventBus();
     inputManager = new InputManager(inputEventBus);
-
-    ImplementedInputEventHandler* eventHandler = new ImplementedInputEventHandler();
-    ImplementedInputEventHandler* eventHandlerTwo = new ImplementedInputEventHandler();
-
     screenManager = new ScreenManager(argc, argv);
 
-    inputEventBus->Subscribe(InputEvents::Line, eventHandler);
-    inputEventBus->Subscribe(InputEvents::Circle, eventHandler);
-    inputEventBus->Subscribe(InputEvents::CreateScreen, screenManager);
+    CreateScreenEventHandler* _createScreenEventHandler = new CreateScreenEventHandler(screenManager, inputEventBus);
 
     boost::thread inputThread(inputManager->StartInputLoop);
 
     screenManager->CreateScreen("ScreenOne", Vector2<int>(&WIDTH, &HEIGHT));
-    // screenManager->CreateScreen("ScreenTwo", Vector2<int>(&WIDTH, &HEIGHT));
 
     screenManager->StartDisplayLoop();
 

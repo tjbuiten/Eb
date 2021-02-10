@@ -10,8 +10,8 @@ add_executable(
     src/Includes/Glut.hpp
     src/Structures/Vector2.hpp
     src/Input/EventHandlers/Headers/InputEventHandler.hpp
-    src/Input/EventHandlers/Headers/ImplementedInputEventHandler.hpp
-    src/Input/EventHandlers/Source/ImplementedInputEventHandler.cpp
+    src/Input/EventHandlers/Headers/CreateScreenEventHandler.hpp
+    src/Input/EventHandlers/Source/CreateScreenEventHandler.cpp
     src/Input/Headers/InputEventBus.hpp
     src/Input/Headers/InputEventMap.hpp
     src/Input/Headers/InputEvents.hpp
