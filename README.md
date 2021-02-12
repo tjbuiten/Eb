@@ -28,3 +28,8 @@ Object is type of ScreenEventHandler -> handles the logic for drawing the correc
  * Circle
  * Line
  * Square
+
+### Libraries
+ * InputHandling -> Executable library which will handle user input with std::cin
+ * Drawing -> Executable library which will connect drawing functions to an eventqueue, this mediates between input and screens
+ * Screens -> Executable library which will connect screens to a eventqueue
