@@ -9,8 +9,6 @@ project(EB
     DESCRIPTION "EventBased drawing library"
     LANGUAGES CXX)
 
-find_package(OpenGL REQUIRED)
-find_package(GLUT REQUIRED)
 
 add_executable(
     ${PROJECT_NAME}
@@ -22,4 +20,4 @@ install(FILES ${MAIN_FILE} DESTINATION src)
 
 add_subdirectory(./src)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ScreenManagement)
+target_link_libraries(${PROJECT_NAME} PRIVATE ScreenManagement)
