@@ -22,4 +22,9 @@ void DisplayManager::AddScreen(std::pair<int, int> size, char screenName[]) {
 
     screens.push_back(_screen);
 }
+
+void DisplayManager::OnSubscribedEvent(events::Event* event) {
+    if (event->GetType() == events::EventType::ADD_SCREEN) {
+    }
+}
 }

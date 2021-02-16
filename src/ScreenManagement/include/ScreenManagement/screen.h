@@ -1,3 +1,5 @@
+#pragma once
+
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
 #include <utility>

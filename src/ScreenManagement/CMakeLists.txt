@@ -13,7 +13,8 @@ target_include_directories(ScreenManagement
 )
 
 target_link_libraries(ScreenManagement
-    PRIVATE
+    PUBLIC
     ${OPENGL_LIBRARIES}
     ${GLUT_LIBRARY}
+    Events
 )
