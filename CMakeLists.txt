@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION "3.19")
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(MAIN_FILE main.cpp)
@@ -20,4 +20,4 @@ install(FILES ${MAIN_FILE} DESTINATION src)
 
 add_subdirectory(./src)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ScreenManagement)
+target_link_libraries(${PROJECT_NAME} PRIVATE ScreenManagement InputManagement)

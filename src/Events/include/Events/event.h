@@ -5,7 +5,7 @@
 namespace events {
 class Event {
     public:
-        virtual EventType GetType();
+        EventType GetType();
     protected:
     private:
 };

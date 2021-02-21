@@ -4,15 +4,15 @@
 #include "Events/event.h"
 
 namespace events {
-class AddScreenEvent: Event {
+class AddScreenEvent: public Event {
     public:
-        AddScreenEvent(std::string name) {
-            this->name = name;
+        AddScreenEvent() {
         }
 
-        EventType GetType() override;
+        EventType GetType();
 
         std::string GetName();
+        void SetName(std::string name);
     protected:
     private:
         std::string name;

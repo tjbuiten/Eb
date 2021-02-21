@@ -1,4 +1,5 @@
 #include "ScreenManagement/display_manager.h"
+#include <iostream>
 
 namespace screen_management {
 std::list<Screen> DisplayManager::screens;
@@ -24,7 +25,11 @@ void DisplayManager::AddScreen(std::pair<int, int> size, char screenName[]) {
 }
 
 void DisplayManager::OnSubscribedEvent(events::Event* event) {
+    std::cout << "INSUBSCRIBEDEVENT\n";
     if (event->GetType() == events::EventType::ADD_SCREEN) {
+    std::cout << "WAKAWAKA\n";
+        char screenName[] = "IMGOD";
+        AddScreen(std::pair<int, int>(100, 100), screenName);
     }
 }
 }

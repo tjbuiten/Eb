@@ -9,8 +9,8 @@
 namespace events {
 class EventBus {
     public:
-        virtual void Subscribe(EventType eventType, EventSubscriber* eventSubscriber) = 0;
-        virtual void SentEvent(Event event) = 0;
+        void Subscribe(EventType eventType, EventSubscriber* eventSubscriber);
+        void SentEvent(Event* event);
     protected:
     private:
         std::map<EventType, std::list<EventSubscriber*>> subscribers;

@@ -8,4 +8,8 @@ EventType AddScreenEvent::GetType() {
 std::string AddScreenEvent::GetName() {
     return name;
 }
+
+void AddScreenEvent::SetName(std::string name) {
+    this->name = name;
+}
 }
