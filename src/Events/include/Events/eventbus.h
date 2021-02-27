@@ -10,7 +10,7 @@ namespace events {
 class EventBus {
     public:
         void Subscribe(EventType eventType, EventSubscriber* eventSubscriber);
-        void SentEvent(Event* event);
+        void SentEvent(std::unique_ptr<events::Event> event);
     protected:
     private:
         std::map<EventType, std::list<EventSubscriber*>> subscribers;

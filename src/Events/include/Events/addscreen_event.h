@@ -9,7 +9,11 @@ class AddScreenEvent: public Event {
         AddScreenEvent() {
         }
 
-        EventType GetType();
+        ~AddScreenEvent() override {
+
+        }
+
+        EventType GetType() override;
 
         std::string GetName();
         void SetName(std::string name);

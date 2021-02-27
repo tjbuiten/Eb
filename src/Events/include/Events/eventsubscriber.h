@@ -5,6 +5,6 @@
 namespace events {
 class EventSubscriber {
     public:
-        virtual void OnSubscribedEvent(Event* event) = 0;
+        virtual void OnSubscribedEvent(std::unique_ptr<events::Event> event) = 0;
 };
 }

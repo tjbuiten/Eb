@@ -11,7 +11,7 @@ void AssemblyLine::AddWorkstation(EventType eventType, Workstation* workstation)
 
 void AssemblyLine::ConstructEvent(EventType eventType) {
 
-    std::optional<Event*> event;
+    std::optional<std::unique_ptr<Event>> event;
 
     for (Workstation* workstation : workstations[eventType]) {
         if (workstation == nullptr) {
@@ -21,12 +21,12 @@ void AssemblyLine::ConstructEvent(EventType eventType) {
         if (!event.has_value()) {
             event = workstation->OnSubscribedEvent(eventType);
         } else {
-            event = workstation->OnSubscribedEvent(event.value());
+            event = workstation->OnSubscribedEvent(move(event.value()));
         }
     };
 
     if (event.has_value()) {
-        _eventBus.SentEvent(event.value());
+        _eventBus.SentEvent(move(event.value()));
         return;
     }
 

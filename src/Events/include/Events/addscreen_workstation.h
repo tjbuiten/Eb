@@ -7,9 +7,9 @@
 namespace events {
 class AddScreenWorkstation : public Workstation {
     public:
-        Event* OnSubscribedEvent(Event* event) override;
-        Event* OnSubscribedEvent(EventType eventType) override;
+        std::unique_ptr<Event> OnSubscribedEvent(std::unique_ptr<Event> event) override;
+        std::unique_ptr<Event> OnSubscribedEvent(EventType eventType) override;
     private:
-        Event* AddScreenNameToEvent(AddScreenEvent* event);
+        std::unique_ptr<Event> AddScreenNameToEvent(AddScreenEvent* event);
 };
 }

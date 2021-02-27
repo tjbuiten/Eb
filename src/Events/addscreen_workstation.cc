@@ -1,15 +1,15 @@
 #include "Events/addscreen_workstation.h"
 
 namespace events {
-Event* AddScreenWorkstation::OnSubscribedEvent(Event* event) {
+std::unique_ptr<Event> AddScreenWorkstation::OnSubscribedEvent(std::unique_ptr<Event> event) {
     return AddScreenNameToEvent((AddScreenEvent*) &event);
 }
 
-Event* AddScreenWorkstation::OnSubscribedEvent(EventType eventType) {
+std::unique_ptr<Event> AddScreenWorkstation::OnSubscribedEvent(EventType eventType) {
     return AddScreenNameToEvent(new AddScreenEvent());
 }
 
-Event* AddScreenWorkstation::AddScreenNameToEvent(AddScreenEvent* event) {
+std::unique_ptr<Event> AddScreenWorkstation::AddScreenNameToEvent(AddScreenEvent* event) {
     std::string screenName = "";
 
     std::cout << "Please input your desired screen name:" << "\n" << "> ";
@@ -18,6 +18,6 @@ Event* AddScreenWorkstation::AddScreenNameToEvent(AddScreenEvent* event) {
 
     event->SetName(screenName);
 
-    return event;
+    return std::make_unique<AddScreenEvent>(*event);
 }
 }

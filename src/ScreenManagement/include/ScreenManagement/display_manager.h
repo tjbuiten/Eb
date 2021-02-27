@@ -15,7 +15,7 @@ class DisplayManager: public events::EventSubscriber {
 
         static void AddScreen(std::pair<int, int> size, char name[]);
         void StartDisplayLoop();
-        void OnSubscribedEvent(events::Event* event) override;
+        void OnSubscribedEvent(std::unique_ptr<events::Event> event) override;
     protected:
     private:
         static std::list<Screen> screens;
