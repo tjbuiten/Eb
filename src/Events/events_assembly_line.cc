@@ -21,12 +21,12 @@ void AssemblyLine::ConstructEvent(EventType eventType) {
         if (!event.has_value()) {
             event = workstation->OnSubscribedEvent(eventType);
         } else {
-            event = workstation->OnSubscribedEvent(move(event.value()));
+            event = workstation->OnSubscribedEvent(std::move(event.value()));
         }
     };
 
     if (event.has_value()) {
-        _eventBus.SentEvent(move(event.value()));
+        _eventBus.SentEvent(std::move(event.value()));
         return;
     }
 

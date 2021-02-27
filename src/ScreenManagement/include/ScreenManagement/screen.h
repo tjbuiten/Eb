@@ -7,7 +7,7 @@
 namespace screen_management {
 class Screen {
     public:
-        Screen(std::pair<int, int> size, char name[]) {
+        Screen(std::pair<int, int> size, const char name[]) {
 	        this->windowId = glutCreateWindow(name);
             this->pixelBuffer = new GLubyte[size.first * size.second * 3];
             this->size = size;

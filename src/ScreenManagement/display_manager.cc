@@ -3,17 +3,21 @@
 
 namespace screen_management {
 std::list<Screen> DisplayManager::screens;
-std::list<events::EventType> DisplayManager::eventQueue;
+std::vector<std::unique_ptr<events::Event>> DisplayManager::eventQueue;
 
 void DisplayManager::Display() {
-    for (events::EventType event : eventQueue) {
-        if (event == events::EventType::ADD_SCREEN) {
-            char screenName[] = "IMGOD";
-            AddScreen(std::pair<int, int>(100, 100), screenName);
-        }
-    }
+    auto eventQueueSize = eventQueue.size();
 
-    eventQueue = {};
+    if (eventQueueSize > 0) {
+        for (int i = 0; i < eventQueueSize; i++) {
+            if (eventQueue[i]->GetType() == events::EventType::ADD_SCREEN) {
+                events::AddScreenEvent* addScreenEvent = dynamic_cast<events::AddScreenEvent*>(eventQueue[i].get());
+                AddScreen(std::pair<int, int>(100, 100), addScreenEvent->GetName().c_str());
+            }
+        }
+        
+        eventQueue.erase(eventQueue.begin(), eventQueue.begin() + eventQueueSize);
+    }
 
     for (Screen screen: screens) {
         screen.ClearScreen();
@@ -27,7 +31,7 @@ void DisplayManager::StartDisplayLoop() {
     glutMainLoop();
 }
 
-void DisplayManager::AddScreen(std::pair<int, int> size, char screenName[]) {
+void DisplayManager::AddScreen(std::pair<int, int> size, const char screenName[]) {
     Screen _screen {size, screenName};
     glutDisplayFunc(Display);
 
@@ -35,6 +39,6 @@ void DisplayManager::AddScreen(std::pair<int, int> size, char screenName[]) {
 }
 
 void DisplayManager::OnSubscribedEvent(std::unique_ptr<events::Event> event) {
-    eventQueue.push_back(events::EventType::ADD_SCREEN);
+    eventQueue.push_back(std::move(event));
 }
 }

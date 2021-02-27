@@ -13,7 +13,7 @@ void EventBus::SentEvent(std::unique_ptr<events::Event> event) {
             subscribers[event->GetType()].remove(subscriber);
         }
 
-        subscriber->OnSubscribedEvent(move(event));
+        subscriber->OnSubscribedEvent(std::move(event));
     };
 }
 }
