@@ -8,15 +8,13 @@
 namespace events {
 class AssemblyLine {
     public:
-        AssemblyLine(EventBus eventBus) {
-            _eventBus = eventBus;
-        }
+        AssemblyLine(EventBus& eventBus): _eventBus(eventBus) { }
 
         void AddWorkstation(EventType eventType, Workstation* workstation);
         void ConstructEvent(EventType eventType);
     protected:
     private:
-        EventBus _eventBus;
+        EventBus& _eventBus;
         std::map<EventType, std::list<Workstation*>> workstations;
 };
 }

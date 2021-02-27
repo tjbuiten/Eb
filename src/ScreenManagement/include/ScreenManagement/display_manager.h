@@ -13,12 +13,13 @@ class DisplayManager: public events::EventSubscriber {
 	        glutInit(&argc,argv);
         }
 
-        void AddScreen(std::pair<int, int> size, char name[]);
+        static void AddScreen(std::pair<int, int> size, char name[]);
         void StartDisplayLoop();
         void OnSubscribedEvent(events::Event* event) override;
     protected:
     private:
         static std::list<Screen> screens;
+        static std::list<events::EventType> eventQueue;
         static void Display();
 };
 }
