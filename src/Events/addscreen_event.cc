@@ -12,4 +12,12 @@ std::string AddScreenEvent::GetName() {
 void AddScreenEvent::SetName(std::string name) {
     this->name = name;
 }
+
+std::pair<int, int> AddScreenEvent::GetSize() {
+    return size;
+}
+
+void AddScreenEvent::SetSize(std::pair<int, int> size) {
+    this->size = size;
+}
 }

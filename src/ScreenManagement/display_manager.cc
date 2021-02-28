@@ -12,7 +12,7 @@ void DisplayManager::Display() {
         for (int i = 0; i < eventQueueSize; i++) {
             if (eventQueue[i]->GetType() == events::EventType::ADD_SCREEN) {
                 events::AddScreenEvent* addScreenEvent = dynamic_cast<events::AddScreenEvent*>(eventQueue[i].get());
-                AddScreen(std::pair<int, int>(100, 100), addScreenEvent->GetName().c_str());
+                AddScreen(addScreenEvent->GetSize(), addScreenEvent->GetName().c_str());
             }
         }
         
