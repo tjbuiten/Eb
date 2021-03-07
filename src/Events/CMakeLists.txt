@@ -2,8 +2,8 @@ add_library(Events
     STATIC
     addscreen_event.cc
     eventbus.cc
-    addscreen_workstation.cc
-    events_assembly_line.cc
+    eventfactory.cc
+    addscreen_eventassembler.cc
 )
 
 target_include_directories(Events

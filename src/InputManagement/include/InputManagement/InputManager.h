@@ -2,17 +2,21 @@
 
 #include <iostream>
 #include "InputManagement/commands.h"
-#include "Events/assemblyline.h"
+#include "Events/eventfactory.h"
+#include "Events/eventbus.h"
 
 namespace input_management {
 class InputManager {
     public:
-        InputManager(events::AssemblyLine assemblyLine): _assemblyLine(assemblyLine) { }
+        InputManager(events::EventFactory eventFactory, events::EventBus eventBus):
+            _eventFactory(eventFactory),
+            _eventBus(eventBus) { }
 
         void InputLoop();
         void StopInputLoop();
     private:
-        events::AssemblyLine _assemblyLine;
+        events::EventFactory _eventFactory;
+        events::EventBus _eventBus;
         bool runInputLoop;
 };
 }

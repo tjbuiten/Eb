@@ -12,7 +12,12 @@ void InputManager::InputLoop() {
 
         events::EventType eventType = Commands::GetEventTypeForString(input);
 
-        _assemblyLine.ConstructEvent(eventType);
+        std::unique_ptr<events::Event> event = _eventFactory.AssembleEvent(eventType);
+
+        if (event == nullptr)
+            continue;
+        
+        _eventBus.SentEvent(std::move(event));
     }
 }
 
